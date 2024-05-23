@@ -63,7 +63,9 @@ const deleteSpecificProduct = async (req: Request, res: Response) => {
       message: "Product deleted successfully!",
       data: result,
     });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const getProduct = async (req: Request, res: Response) => {

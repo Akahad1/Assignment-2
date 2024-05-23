@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { orderService } from "./order.services";
-import { productServices } from "../product/product.services";
 import orderValidatorSchema from "./order.joi.validator";
 
 const createOrder = async (req: Request, res: Response) => {
