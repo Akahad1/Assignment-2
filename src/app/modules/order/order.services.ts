@@ -16,10 +16,7 @@ const getAllOrderFromDB = async (email?: any) => {
   }
 };
 
-// const getSpecificUserOrderFromDB = async (email: any) => {};
-
 export const orderService = {
   createOrderIntoDB,
   getAllOrderFromDB,
-  // getSpecificUserOrderFromDB,
 };

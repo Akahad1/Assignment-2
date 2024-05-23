@@ -47,21 +47,7 @@ const getAllOrder = async (req: Request, res: Response) => {
   }
 };
 
-// const getSpecificUserOrder = async (req: Request, res: Response) => {
-//   try {
-//     const email = req.query.email;
-//     console.log(email);
-//   } catch (err: any) {
-//     res.status(400).json({
-//       success: false,
-//       message: err.message || "SomeThing is Rong",
-//       error: err,
-//     });
-//   }
-// };
-
 export const orderController = {
   createOrder,
   getAllOrder,
-  //   getSpecificUserOrder,
 };
