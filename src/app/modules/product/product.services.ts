@@ -27,8 +27,18 @@ const deleteSpecificProductFromDB = async (id: any) => {
   return result;
 };
 const searchAndGetProductFromDB = async (searchItem: any) => {};
-const updateSpecificProductFromDB = async (id: any) => {
-  const result = await Product.updateOne({ _id: id });
+
+const updateSpecificProductFromDB = async (
+  id: any,
+  quantity: number,
+  price: number,
+  category: string
+) => {
+  const result = await Product.updateOne(
+    { _id: id },
+
+    { "inventory.quantity": quantity, price: price, category: category }
+  );
   return result;
 };
 

@@ -90,8 +90,30 @@ const getProduct = async (req: Request, res: Response) => {
 const updateSpecificProduct = async (req: Request, res: Response) => {
   try {
     const id = req.params.productId;
-    const result = await productServices.updateSpecificProductFromDB(id);
-  } catch (err) {}
+    const quantity = req.body.inventory.quantity as number;
+    const { price, category } = req.body;
+
+    const result = await productServices.updateSpecificProductFromDB(
+      id,
+      quantity,
+      price,
+      category
+    );
+
+    console.log(result);
+    const updateData = await productServices.getSingleProductFromDB(id);
+    res.status(200).json({
+      success: true,
+      message: "Product updated successfully!",
+      data: updateData,
+    });
+  } catch (err: any) {
+    res.status(400).json({
+      success: false,
+      message: err.message || "SomeThing is Rong",
+      error: err,
+    });
+  }
 };
 
 export const productController = {
