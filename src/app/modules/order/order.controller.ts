@@ -1,10 +1,24 @@
 import { Request, Response } from "express";
 import { orderService } from "./order.services";
+import { productServices } from "../product/product.services";
+import orderValidatorSchema from "./order.joi.validator";
 
 const createOrder = async (req: Request, res: Response) => {
   try {
     const order = req.body;
-    const result = await orderService.createOrderIntoDB(order);
+    // data validate Using joi
+    const { error, value } = orderValidatorSchema.validate(order);
+    console.log({ error }, { value });
+    const result = await orderService.createOrderIntoDB(value);
+
+    if (error) {
+      res.status(400).json({
+        success: false,
+        message: "SomeThing is Rong",
+        error,
+      });
+    }
+
     res.status(200).json({
       success: true,
       message: "Order created successfully!",

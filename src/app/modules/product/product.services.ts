@@ -14,11 +14,13 @@ const getAllProductFromDB = async (searchItem?: any) => {
     return result;
   } else {
     const result = await Product.find();
+    console.log(Product);
     return result;
   }
 };
 const getSingleProductFromDB = async (id: any) => {
   const result = await Product.findOne({ _id: id });
+
   return result;
 };
 
